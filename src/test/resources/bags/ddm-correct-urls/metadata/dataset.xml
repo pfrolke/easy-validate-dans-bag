@@ -21,8 +21,15 @@
         <ddm:references scheme="URL">http://abc.def</ddm:references>
         <ddm:references scheme="DOI">10.17026/test-123-456</ddm:references>
         <ddm:references scheme="DOI">https://dx.doi.org/doi:10.17026/test-123-456</ddm:references>
+        <ddm:references scheme="DOI" href="https://dx.doi.org/doi:10.17026/test-123-456">a doi referencing my dataset</ddm:references>
         <ddm:references scheme="DOI">http://doi.org/10.17026/test-123-456</ddm:references>
         <ddm:references scheme="URN">urn:uuid:6e8bc430-9c3a-11d9-9669-0800200c9a66()+,-\.:=@;$_!*'%/?#</ddm:references>
+        <ddm:references scheme="id-type:URL">http://abc.def</ddm:references>
+        <ddm:references scheme="id-type:DOI">10.17026/test-123-456</ddm:references>
+        <ddm:references scheme="id-type:DOI">https://dx.doi.org/doi:10.17026/test-123-456</ddm:references>
+        <ddm:references scheme="id-type:DOI" href="https://dx.doi.org/doi:10.17026/test-123-456">a doi referencing my dataset</ddm:references>
+        <ddm:references scheme="id-type:DOI">http://doi.org/10.17026/test-123-456</ddm:references>
+        <ddm:references scheme="id-type:URN">urn:uuid:6e8bc430-9c3a-11d9-9669-0800200c9a66()+,-\.:=@;$_!*'%/?#</ddm:references>
         <ddm:subject schemeURI="https://data.cultureelerfgoed.nl/term/id/pan/PAN" subjectScheme="PAN thesaurus ideaaltypes" valueURI="https://data.cultureelerfgoed.nl/term/id/pan/17-01-01" xml:lang="en">knobbed sickle</ddm:subject>
         <ddm:subject schemeURI="http://vocab.getty.edu/aat/" subjectScheme="Art and Architecture Thesaurus" valueURI="http://vocab.getty.edu/aat/300264860" xml:lang="en">Unknown</ddm:subject>
         <dc:subject>metaal</dc:subject>

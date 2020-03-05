@@ -58,7 +58,20 @@ object ProfileVersion0 {
     NumberedRule("2.2(a)", containsFile(Paths.get("metadata/dataset.xml")), dependsOn = List("2.1")),
     NumberedRule("2.2(b)", containsFile(Paths.get("metadata/files.xml")), dependsOn = List("2.1")),
     // 2.3 does not state restrictions, so it does not need checking
-    NumberedRule("2.5", containsNothingElseThan(Paths.get("metadata"), Seq("dataset.xml", "depositor-info", "files.xml", "depositor-info/agreements.xml", "depositor-info/message-from-depositor.txt")), dependsOn = List("2.1")),
+    NumberedRule("2.5", containsNothingElseThan(
+      Paths.get("metadata"),
+      Seq(
+        "dataset.xml",
+        "files.xml",
+        "amd.xml",
+        "emd.xml",
+        "depositor-info",
+        "depositor-info/agreements.xml",
+        "depositor-info/message-from-depositor.txt",
+        "depositor-info/depositor-agreement.pdf",
+        "depositor-info/depositor-agreement.txt",
+      )
+    ), dependsOn = List("2.1")),
 
     // METADATA
 

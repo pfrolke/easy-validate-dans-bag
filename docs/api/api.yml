@@ -1,0 +1,129 @@
+openapi: 3.0.1
+
+servers:
+  - url: http://localhost:20180/
+
+info:
+  description: Public interface for validating datasets in EASY.
+  version: 1.0.0
+  title: validate-dans-bag API
+  contact:
+    email: info@dans.knaw.nl
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+paths:
+  /:
+    get:
+      tags:
+        - service
+      summary: Returns a description of the service.
+      responses:
+        200:
+          description: description of the service
+          content:
+            text/plain:
+              schema:
+                type: string
+                description: a plain text, human readable description of the service
+                example: |
+                  EASY Deposit API Service running (v1.0.0)
+
+  /validate:
+    post:
+      tags:
+        - validation
+      summary: Sets a JSON web token cookie for authenticating subsequent calls to the service.
+      responses:
+        200:
+          $ref: "#/components/responses/Ok"
+        400:
+          $ref: "#/components/responses/InvalidArchive"
+        500:
+          $ref: "#/components/responses/InternalServerError"
+      parameters:
+        - name: PackageInfoType
+          in: query
+          description: Information type the bag should be validated as
+          required: false
+          schema:
+            type: string
+            enum: [SIP, AIP]
+            default: SIP
+        - name: uri
+          in: query
+          description: URI of the bag to be validated.
+          required: false
+          schema:
+            type: string
+            default: file:///
+        - name: bag-store
+          in: query
+          description: Bag-store to use as context for validation.
+          required: false
+          schema:
+            type: string
+
+components:
+  responses:
+    Ok:
+      description: Ok. A bag is validated.
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/validateJsonOk"
+        text/plain:
+          schema:
+            $ref: "#/components/schemas/validateTextOk"
+
+    InternalServerError:
+      description: Internal Server Error.
+
+    InvalidArchive:
+      description: Bad request. No bag can be found at the provided URL.
+
+  schemas:
+    validateJsonOk:
+      type: object
+      example:
+        bagUri: file:///path/to/bag
+        bag: bag
+        profileVersion: 0
+        infoPackageType: AIP
+        isCompliant: false
+        ruleViolations: [{1.2.6(a) bag-info.txt must contain exactly one 'EASY-User-Account' element; number found 0}, {4.2 Is-Version-Of value must be a URN}]
+      properties:
+        bagUri:
+          type: string
+          format: uuid
+        bag:
+          type: string
+          format: url
+        profileVersion:
+          type: integer
+        infoPackageType:
+          type: string
+        isCompliant:
+          type: boolean
+        ruleViolations:
+          type: array
+          items:
+            type: object
+            properties:
+              ruleNumber:
+                type: string
+              ruleText:
+                type: string
+
+    validateTextOk:
+      type: string
+      example: |
+        Bag Uri: file:///path/to/bag
+        Information package type: AIP
+        Bag: bag
+        Profile version: 0
+        Is compliant: false
+        Rule Violations:
+        - [1.2.6(a)] bag-info.txt must contain exactly one 'EASY-User-Account' element; number found: 0
+        - [4.2] Is-Version-Of value must be a URN

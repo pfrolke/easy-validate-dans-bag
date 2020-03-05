@@ -43,6 +43,7 @@ class EasyValidateDansBagServletSpec extends TestSupportFixture
       status shouldBe OK_200
       val resultMessage = ResultMessage.read(body)
       resultMessage.infoPackageType shouldBe SIP
+      resultMessage.ruleViolations shouldBe empty
       resultMessage.isCompliant shouldBe true
     }
   }

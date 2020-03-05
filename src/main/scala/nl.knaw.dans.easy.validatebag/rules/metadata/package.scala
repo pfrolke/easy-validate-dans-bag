@@ -363,19 +363,32 @@ package object metadata extends DebugEnhancedLogging {
   }
 
   private def getDoiTypeElementValues(ddm: Node): Try[(UrlValidationKey, Seq[String])] = Try {
-    DoiKey -> getElementValues(ddm, "scheme", List("DOI", "id-type:DOI"))
+    DoiKey -> getElementValues(ddm, "scheme", List("DOI", "id-type:DOI"), List("href"))
   }
 
   private def getUrnTypeElementValues(ddm: Node): Try[(UrlValidationKey, Seq[String])] = Try {
-    UrnKey -> getElementValues(ddm, "scheme", List("URN", "id-type:URN"))
+    UrnKey -> getElementValues(ddm, "scheme", List("URN", "id-type:URN"), List("href"))
   }
 
-  private def getElementValues(node: Node, attribute: String, attributeValues: List[String]): Seq[String] = {
+  /**
+   * Returns the bodies of all leaf nodes in ''node'', for which the given ''attribute'' has one of the given ''attributeValues'',
+   * except if that leaf node also contains an attribute in ''excludeOnAttribute''.
+   *
+   * @param node the `Node` for which to find all bodies in its leafs
+   * @param attribute only include bodies of leaf nodes containing this attribute
+   * @param attributeValues only include bodies of leaf nodes when an attribute contains one of these values
+   * @param excludeOnAttribute only include bodies of leaf nodes that do NOT contain one of these attributes
+   * @return a list of bodies of leaf nodes, filtered by the given attribute filters.
+   */
+  private def getElementValues(node: Node, attribute: String, attributeValues: List[String], excludeOnAttribute: List[String] = Nil): Seq[String] = {
     (node \\ "_")
       .withFilter(_.attributes
         .filter(_.prefixedKey == attribute)
         .filter(attributeValues contains _.value.text)
         .nonEmpty)
+      .withFilter(_.attributes
+        .filter(md => excludeOnAttribute.contains(md.prefixedKey))
+        .isEmpty)
       .map(_.text)
   }
 

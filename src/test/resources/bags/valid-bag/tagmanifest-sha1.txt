@@ -1,0 +1,11 @@
+a7da951600ca13a2e9f94fb884054e4b0ab03bcd  bag-info.txt
+e2924b081506bac23f5fffe650ad1848a1c8ac1d  bagit.txt
+d7b3b1c72dae951ae0ed87ad4f198e0abd80872f  manifest-sha1.txt
+8375f8d6975cc836c9ea28d1555c79e10276240c  metadata/dataset.xml
+410552d46fdb94b1e9d1be5169e57501bd77bf1c  metadata/files.xml
+955063dc5321a22b8c71d742bd11c11774af3726  metadata/amd.xml
+144c4f8002e7192644118ca9a4e01628871c6bf9  metadata/emd.xml
+c9de2b6aba036b67f20d78bd9e39da4f9cde40ad  metadata/depositor-info/agreements.xml
+15fe5d105734e69e44c533f7acc657abaa69687f  metadata/depositor-info/depositor-agreement.pdf
+23aa6d648d4c11d88d7f37ba7916e3c9353d75c0  metadata/depositor-info/depositor-agreement.txt
+c01bed25581613c1b672be0c8b3af56be4e64817  metadata/depositor-info/message-from-depositor.txt

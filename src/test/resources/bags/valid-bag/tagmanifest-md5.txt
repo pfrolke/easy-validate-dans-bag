@@ -1,5 +1,0 @@
-379ef8bad4000cd8494b2199e5cca6bc  bag-info.txt
-9e5ad981e0d29adc278f6a294b8c2aca  bagit.txt
-e489e8b0ea10775b05b65a67305c4252  manifest-md5.txt
-1a737353f1e92fc50c0ec0b5a9b87538  metadata/dataset.xml
-0563ce1042754547bfc49e9d3bed68b6  metadata/files.xml

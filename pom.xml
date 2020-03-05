@@ -25,7 +25,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>nl.knaw.dans.easy</groupId>
     <artifactId>easy-validate-dans-bag</artifactId>
-    <version>1.2.2-SNAPSHOT</version>
+    <version>1.2.3-SNAPSHOT</version>
     <name>EASY Validate DANS Bag</name>
     <url>https://github.com/DANS-KNAW/easy-validate-dans-bag</url>
     <description>Determines whether a DANS bag is valid according to the DANS BagIt Profile.</description>
