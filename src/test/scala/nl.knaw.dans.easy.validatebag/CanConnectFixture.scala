@@ -17,7 +17,7 @@ package nl.knaw.dans.easy.validatebag
 
 import java.net.{ HttpURLConnection, URL }
 
-import org.scalatest.Matchers
+import org.scalatest.matchers.should.Matchers
 
 import scala.util.Try
 

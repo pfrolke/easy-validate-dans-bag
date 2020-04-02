@@ -21,12 +21,14 @@ import better.files._
 import nl.knaw.dans.easy.validatebag.rules.bagit.bagIsValid
 import nl.knaw.dans.easy.validatebag.validation.RuleViolationDetailsException
 import nl.knaw.dans.lib.logging.DebugEnhancedLogging
-import org.scalatest._
+import org.scalatest.{ BeforeAndAfterEach, Inside }
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
 import scala.util.matching.Regex
 import scala.util.{ Failure, Success }
 
-trait TestSupportFixture extends FlatSpec with Matchers with Inside with BeforeAndAfterEach with DebugEnhancedLogging {
+trait TestSupportFixture extends AnyFlatSpec with Matchers with Inside with BeforeAndAfterEach with DebugEnhancedLogging {
   lazy val testDir: File = File(s"target/test/${ getClass.getSimpleName }")
   val ddmSchemaUrl = "https://easy.dans.knaw.nl/schemas/md/ddm/ddm.xsd"
   val filesSchemaUrl = "https://easy.dans.knaw.nl/schemas/bag/metadata/files/2018/04/files.xsd"

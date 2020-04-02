@@ -18,9 +18,10 @@ package nl.knaw.dans.easy.validatebag
 import java.io.{ ByteArrayOutputStream, File }
 import java.nio.file.Paths
 
-import org.scalatest._
+import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.matchers.should.Matchers
 
-class ReadmeSpec extends FlatSpec with Matchers with CustomMatchers {
+class ReadmeSpec extends AnyFlatSpec with Matchers with CustomMatchers {
   private val clo = new CommandLineOptions(Array[String](), Configuration(Paths.get("src/main/assembly/dist"))) {
     // avoids System.exit() in case of invalid arguments or "--help"
     override def verify(): Unit = {}
